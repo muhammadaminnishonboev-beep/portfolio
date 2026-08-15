@@ -113,3 +113,25 @@ nav a:hover {
     pointer-events: none;
     user-select: none;
 }
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  border: 2px solid #00d2ff;
+  background: transparent;
+  color: #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: #00d2ff;
+  color: #000;
+}
