@@ -45,32 +45,66 @@
         </div>
     </section>
 
-    <!-- Portfolio -->
- <section id="portfolio" class="portfolio">
-        <h2>Mening Ishlarim</h2>
+<!-- Portfolio -->
+<section id="portfolio" class="portfolio">
+  <h2>Mening Ishlarim</h2>
+  
+  <!-- Filter Tugmalari -->
+  <div class="filter-buttons">
+    <button class="filter-btn active" data-filter="all">Barchasi</button>
+    <button class="filter-btn" data-filter="image">Rasmlar</button>
+    <button class="filter-btn" data-filter="video">Videolar</button>
+  </div>
+
   <div class="portfolio-grid">
-            <div class="work-item">
-                <img src="images/work1.png" alt="Photoshop Ishim">
-                <p>Photoshop poster dizayni</p>
-                <a href="files/work1.png" download class="download-btn">Yuklab olish</a>
-            </div>
+    <!-- Rasm 1 -->
+    <div class="work-item" data-category="image">
+      <img src="images/work1.png" alt="Photoshop Ishim">
+      <p>Photoshop poster dizayni</p>
+      <a href="files/work1.png" download class="download-btn">Yuklab olish</a>
+    </div>
 
-            <div class="work-item">
-                <img src="images/work2.png" alt="Illustrator Ishim">
-                <p>Illustrator vektor grafikasi</p>
-                <a href="files/work2.png" download class="download-btn">Yuklab olish</a>
-            </div>
+    <!-- Rasm 2 -->
+    <div class="work-item" data-category="image">
+      <img src="images/work2.png" alt="Illustrator Ishim">
+      <p>Illustrator vektor grafikasi</p>
+      <a href="files/work2.png" download class="download-btn">Yuklab olish</a>
+    </div>
 
-            <div class="work-item">
-                <video src="images/animatsiya.mp4" autoplay loop muted playsinline></video>
-                <p>After Effects motion animatsiya</p>
-                <a href="files/animatsiya.mp4" download class="download-btn">Yuklab olish</a>
-            </div>
-        </div>
-        <h2>Loyiha bormi? Birgalikda ishlaymiz!</h2>
-        <p>Buyurtma va hamkorlik uchun menga yozing.</p>
-        <a href=https://t.me/wallpaper_posts class="cta-btn" target="_blank">Telegram orqali bog'lanish</a>
-    </section>
+    <!-- Video -->
+    <div class="work-item" data-category="video">
+      <video src="images/animatsiya.mp4" autoplay loop muted playsinline></video>
+      <p>After Effects motion animatsiya</p>
+      <a href="files/animatsiya.mp4" download class="download-btn">Yuklab olish</a>
+    </div>
+  </div>
 
+  <h2>Loyiha bormi? Birgalikda ishlaymiz!</h2>
+  <p>Buyurtma va hamkorlik uchun menga yozing.</p>
+  <a href="https://t.me/wallpaper_posts" class="cta-btn" target="_blank">Telegram orqali bog'lanish</a>
+</section>
+
+<!-- Tugmalarni ishlatuvchi skript -->
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const workItems = document.querySelectorAll('.work-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      workItems.forEach(item => {
+        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
